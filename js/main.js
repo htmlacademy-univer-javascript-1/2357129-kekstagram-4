@@ -33,8 +33,6 @@ const LIKES_MIN = 15;
 const LIKES_MAX = 200;
 const COMMENTS_MAX = 30;
 
-const photos = [];
-
 const getRandomInteger = (a,b) => {
   const upper = Math.floor(Math.max(a,b));
   const lower = Math.ceil(Math.min(a,b));
@@ -92,10 +90,7 @@ const createImage = () => ({
   comments: createRandomComments(getRandomInteger(0, COMMENTS_MAX)),
 });
 
-const createImages = () => {
-  for (let i = 1; i <= PHOTOS_COUNT; i++) {
-    photos.push(createImage(i));
-  }
-};
+const createImages = () => Array.from({length: PHOTOS_COUNT}, createImage);
 
-createImages();
+const posts = createImages();
+
