@@ -33,6 +33,8 @@ const LIKES_MIN = 15;
 const LIKES_MAX = 200;
 const COMMENTS_MAX = 30;
 
+const photos = [];
+
 const getRandomInteger = (a,b) => {
   const upper = Math.floor(Math.max(a,b));
   const lower = Math.ceil(Math.min(a,b));
@@ -73,7 +75,7 @@ const createRandomComments = (count) => {
   const result = [];
   const commentIdGenerator = createRandomIdFromRangeGenerator(1, count);
 
-  for(let i = 0; i < count; i++) {
+  for (let i = 0; i < count; i++) {
     const urlIdGenerator = createRandomIdFromRangeGenerator(1, 6);
 
     result.push(createRandomComment(commentIdGenerator, urlIdGenerator));
@@ -90,4 +92,10 @@ const createImage = () => ({
   comments: createRandomComments(getRandomInteger(0, COMMENTS_MAX)),
 });
 
-createImage();
+const createImages = () => {
+  for (let i = 1; i <= PHOTOS_COUNT; i++) {
+    photos.push(createImage(i));
+  }
+};
+
+createImages();
