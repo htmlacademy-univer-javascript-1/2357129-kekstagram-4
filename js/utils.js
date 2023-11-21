@@ -22,6 +22,8 @@ const createRandomIdFromRangeGenerator = (min, max) => {
   };
 };
 
+const isEscKey = (evt) => evt.key === 'Escape';
+
 const createImageUrl = (id, derictory, format) => derictory + id + format;
 
-export {getRandomInteger, createRandomIdFromRangeGenerator, createImageUrl};
+export {getRandomInteger, createRandomIdFromRangeGenerator, createImageUrl, isEscKey};
