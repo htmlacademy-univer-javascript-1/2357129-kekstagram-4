@@ -1,11 +1,12 @@
-import './data.js';
-import {PHOTOS_COUNT, createImage } from './data.js';
-import {createPictures} from './pictures.js';
-import './big-picture.js';
-import {initForm} from './form.js';
-import './hashtag-pristine.js';
+import { renderPhotos } from './pictures.js';
+import {uploadForm} from './formUpload.js';
+import {setData} from './fetch.js';
+import {showUnloadingErrorMessage} from './utils.js';
 
-const pictures = Array.from( {length: PHOTOS_COUNT}, createImage);
+setData(renderPhotos,
+  () => {
+    showUnloadingErrorMessage('Не удалось загрузить данные из сервера :(');
+  },
+  'GET');
 
-createPictures(pictures);
-initForm();
+uploadForm();
